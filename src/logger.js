@@ -17,13 +17,13 @@ export default function createLogger (options = {}) {
   return function loggingMiddleware (store) {
     return store.scan((prevState, nextState) => {
 
-      logger.group('change');
+      logger.group('State Change');
 
       logger.log(`%c prev state`, `color: ${colors.prevState}; font-weight: bold`, prevState);
       logger.log(`%c next state:`, `color: ${colors.nexxtState}; font-weight: bold`, nextState);
 
       logger.groupEnd();
-      return state;
+      return nextState;
     });
   }
 }
